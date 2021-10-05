@@ -1,7 +1,48 @@
 <ActionBar>
-  <Label text="Home"></Label>
+  <label text="Quiz" paddingBottom="30"></label>
 </ActionBar>
 
 <GridLayout>
-  <!-- Add your page content here -->
+  <ScrollView>
+    <StackLayout>
+
+      <FlexboxLayout flexDirection="column" backgroundColor="#F8B195" alignItems="center">
+        <Label text="Number of questions" textWrap="true" fontWeight="bold" fontSize="15"
+          horizontalAlignment="center"></Label>
+        <ListPicker [items]="number" class="picker" width="200"
+          (selectedIndexChange)="getSelectedValue($event.value, 'number')">
+        </ListPicker>
+
+      </FlexboxLayout>
+      <StackLayout height="10" backgroundColor="white"></StackLayout>
+
+      <FlexboxLayout flexDirection="column" backgroundColor="#F8B195" alignItems="center">
+        <Label text="Category" textWrap="true" fontWeight="bold" fontSize="15" horizontalAlignment="center"></Label>
+        <ListPicker [items]="categoryNameObs" class="picker" width="300"
+          (selectedIndexChange)="getSelectedValue($event.value, 'category')"> </ListPicker>
+      </FlexboxLayout>
+      <StackLayout height="10" backgroundColor="white"></StackLayout>
+
+      <FlexboxLayout flexDirection="column" backgroundColor="#F8B195" alignItems="center">
+        <Label text="Difficulty" textWrap="true" fontWeight="bold" fontSize="15" horizontalAlignment="center"></Label>
+        <ListPicker [items]="difficulty" class="picker" width="200"
+          (selectedIndexChange)="getSelectedValue($event.value, 'difficulty')"> </ListPicker>
+      </FlexboxLayout>
+      <StackLayout height="10" backgroundColor="white"></StackLayout>
+
+
+      <FlexboxLayout flexDirection="column" backgroundColor="#F8B195" alignItems="center">
+        <Label text="Question Type" textWrap="true" fontWeight="bold" fontSize="15"
+          horizontalAlignment="center"></Label>
+        <ListPicker [items]="questionTypeObs" class="picker" width="200"
+          (selectedIndexChange)="getSelectedValue($event.value, 'type')"> </ListPicker>
+      </FlexboxLayout>
+      <StackLayout height="10" backgroundColor="white"></StackLayout>
+
+      <button text="Create Quiz" (tap)=createQuiz()></button>
+
+    </StackLayout>
+
+  </ScrollView>
+
 </GridLayout>

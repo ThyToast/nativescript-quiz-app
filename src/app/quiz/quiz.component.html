@@ -1,0 +1,15 @@
+<StackLayout>
+    <Label text={{pageNumber}} textWrap="true" fontWeight="bold" fontSize="15" horizontalAlignment="center"></Label>
+    <FlexboxLayout flexDirection="column" backgroundColor="#F67280" alignItems="center">
+        <Label text="Time Remaining: {{counter}}" textWrap="true" fontWeight="bold" fontSize="15" style="color: white"
+            [hidden]="timeout"></Label>
+
+        <Label text="Time's up!" textWrap="true" fontWeight="bold" fontSize="15" style="color: white"
+            [hidden]="!timeout"></Label>
+    </FlexboxLayout>
+
+    <WebView src="<span><font size='4'>{{quizData[pageNumber-1].question}}</font></span>"></WebView>
+
+    <button text="Next Quiz" (tap)=nextQuiz() [hidden]="isEnd"></button>
+    <button text="End Quiz" (tap)=endQuiz() [hidden]="!isEnd"></button>
+</StackLayout>
