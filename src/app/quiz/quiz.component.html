@@ -10,6 +10,19 @@
 
     <WebView src="<span><font size='4'>{{quizData[pageNumber-1].question}}</font></span>"></WebView>
 
-    <button text="Next Quiz" (tap)=nextQuiz() [hidden]="isEnd"></button>
-    <button text="End Quiz" (tap)=endQuiz() [hidden]="!isEnd"></button>
+    <GridLayout columns="200, 200" rows="200, 200">
+
+        <button row="0" col="0" text={{quizQuestion[0]}} textWrap="true" fontWeight="bold" fontSize="15"
+            horizontalAlignment="center" (tap)=submitAns(quizQuestion[0])></button>
+        <button row="0" col="1" text={{quizQuestion[1]}} textWrap="true" fontWeight="bold" fontSize="15"
+            horizontalAlignment="center" (tap)=submitAns(quizQuestion[1])></button>
+        <button row="1" col="0" text={{quizQuestion[2]}} textWrap="true" fontWeight="bold" fontSize="15"
+            horizontalAlignment="center" [hidden]="!quizQuestion[2]" (tap)=submitAns(quizQuestion[2])></button>
+        <button row="1" col="1" text={{quizQuestion[3]}} textWrap="true" fontWeight="bold" fontSize="15"
+            horizontalAlignment="center" [hidden]="!quizQuestion[3]" (tap)=submitAns(quizQuestion[3])></button>
+
+    </GridLayout>
+
+    <!-- <button text="Next Quiz" (tap)=nextQuiz() [hidden]="isEnd"></button> -->
+    <!-- <button text="End Quiz" (tap)=endQuiz() [hidden]="!isEnd"></button> -->
 </StackLayout>

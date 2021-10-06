@@ -11,8 +11,11 @@ export class QuizComponent implements OnInit {
   counter: number;
   timeout: boolean;
 
+  quizQuestion = [];
+  score = 0;
   pageNumber = 1;
   isEnd = false;
+
   constructor(private router: RouterExtensions) {
     this.quizData = this.router.router.getCurrentNavigation().extras.state.quiz.results;
   }
@@ -20,18 +23,16 @@ export class QuizComponent implements OnInit {
   ngOnInit(): void {
     this.checkEndPage();
     this.startCountdown(10);
+    this.randomQuiz();
   }
 
   nextQuiz() {
     this.checkEndPage();
     if (this.isEnd == false) {
       this.pageNumber++;
+      this.randomQuiz();
       this.checkEndPage();
     }
-  }
-
-  endQuiz() {
-    this.router.backToPreviousPage();
   }
 
   checkEndPage() {
@@ -52,5 +53,28 @@ export class QuizComponent implements OnInit {
         console.log("Bingo!");
       }
     }, 1000);
+  }
+
+  randomQuiz() {
+    this.quizQuestion = [];
+    this.quizData[this.pageNumber - 1].incorrect_answers.forEach((ans) => {
+      this.quizQuestion.push(ans);
+    });
+    this.quizQuestion.push(this.quizData[this.pageNumber - 1].correct_answer);
+    this.quizQuestion.sort(() => Math.random() - 0.5);
+    console.log(this.quizQuestion);
+    console.log(this.quizData[this.pageNumber - 1].correct_answer);
+  }
+
+  submitAns(answer: string) {
+    if (answer == this.quizData[this.pageNumber - 1].correct_answer) {
+      this.score++;
+      console.log("score is: ", this.score);
+    }
+    if (this.isEnd) {
+      this.router.backToPreviousPage();
+    } else {
+      this.nextQuiz();
+    }
   }
 }
