@@ -1,3 +1,4 @@
+import { quizResult } from "./../result/result.model";
 import { quiz } from "./quiz.model";
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "@nativescript/angular";
@@ -12,6 +13,7 @@ export class QuizComponent implements OnInit {
   timeout: boolean;
 
   quizQuestion = [];
+  correctAnswer = [];
   score = 0;
   pageNumber = 1;
   isEnd = false;
@@ -22,7 +24,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkEndPage();
-    this.startCountdown(10);
+    this.startCountdown(60);
     this.randomQuiz();
   }
 
@@ -67,12 +69,27 @@ export class QuizComponent implements OnInit {
   }
 
   submitAns(answer: string) {
+    this.correctAnswer.push(this.quizData[this.pageNumber - 1].correct_answer);
     if (answer == this.quizData[this.pageNumber - 1].correct_answer) {
       this.score++;
       console.log("score is: ", this.score);
     }
     if (this.isEnd) {
-      this.router.backToPreviousPage();
+      let result = new quizResult();
+
+      result.score = this.score;
+      result.date = new Date().toLocaleString("en-GB", {
+        timeZone: "Asia/Kuala_Lumpur",
+      });
+      result.timeTaken = 60 - this.counter;
+      result.correctAns = this.correctAnswer;
+
+      console.log(result);
+      this.router.navigate(["/result"], {
+        state: {
+          result,
+        },
+      });
     } else {
       this.nextQuiz();
     }

@@ -6,7 +6,7 @@
   <ScrollView>
     <StackLayout>
 
-      <FlexboxLayout flexDirection="column" backgroundColor="#F8B195" alignItems="center">
+      <FlexboxLayout flexDirection="column" backgroundColor="#99B898" alignItems="center">
         <Label text="Number of questions" textWrap="true" fontWeight="bold" fontSize="15"
           horizontalAlignment="center"></Label>
         <ListPicker [items]="number" class="picker" width="200"
@@ -16,14 +16,14 @@
       </FlexboxLayout>
       <StackLayout height="10" backgroundColor="white"></StackLayout>
 
-      <FlexboxLayout flexDirection="column" backgroundColor="#F8B195" alignItems="center">
+      <FlexboxLayout flexDirection="column" backgroundColor="#99B898" alignItems="center">
         <Label text="Category" textWrap="true" fontWeight="bold" fontSize="15" horizontalAlignment="center"></Label>
         <ListPicker [items]="categoryNameObs" class="picker" width="300"
           (selectedIndexChange)="getSelectedValue($event.value, 'category')"> </ListPicker>
       </FlexboxLayout>
       <StackLayout height="10" backgroundColor="white"></StackLayout>
 
-      <FlexboxLayout flexDirection="column" backgroundColor="#F8B195" alignItems="center">
+      <FlexboxLayout flexDirection="column" backgroundColor="#99B898" alignItems="center">
         <Label text="Difficulty" textWrap="true" fontWeight="bold" fontSize="15" horizontalAlignment="center"></Label>
         <ListPicker [items]="difficulty" class="picker" width="200"
           (selectedIndexChange)="getSelectedValue($event.value, 'difficulty')"> </ListPicker>
@@ -31,7 +31,7 @@
       <StackLayout height="10" backgroundColor="white"></StackLayout>
 
 
-      <FlexboxLayout flexDirection="column" backgroundColor="#F8B195" alignItems="center">
+      <FlexboxLayout flexDirection="column" backgroundColor="#99B898" alignItems="center">
         <Label text="Question Type" textWrap="true" fontWeight="bold" fontSize="15"
           horizontalAlignment="center"></Label>
         <ListPicker [items]="questionTypeObs" class="picker" width="200"

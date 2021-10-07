@@ -1,4 +1,4 @@
-<StackLayout>
+<StackLayout backgroundColor="#FECEAB">
     <Label text={{pageNumber}} textWrap="true" fontWeight="bold" fontSize="15" horizontalAlignment="center"></Label>
     <FlexboxLayout flexDirection="column" backgroundColor="#F67280" alignItems="center">
         <Label text="Time Remaining: {{counter}}" textWrap="true" fontWeight="bold" fontSize="15" style="color: white"
@@ -13,13 +13,15 @@
     <GridLayout columns="200, 200" rows="200, 200">
 
         <button row="0" col="0" text={{quizQuestion[0]}} textWrap="true" fontWeight="bold" fontSize="15"
-            horizontalAlignment="center" (tap)=submitAns(quizQuestion[0])></button>
+            horizontalAlignment="center" (tap)=submitAns(quizQuestion[0]) padding=10 backgroundColor="#FF847C"></button>
         <button row="0" col="1" text={{quizQuestion[1]}} textWrap="true" fontWeight="bold" fontSize="15"
-            horizontalAlignment="center" (tap)=submitAns(quizQuestion[1])></button>
+            horizontalAlignment="center" (tap)=submitAns(quizQuestion[1]) padding=10 backgroundColor="#FF847C"></button>
         <button row="1" col="0" text={{quizQuestion[2]}} textWrap="true" fontWeight="bold" fontSize="15"
-            horizontalAlignment="center" [hidden]="!quizQuestion[2]" (tap)=submitAns(quizQuestion[2])></button>
+            horizontalAlignment="center" [hidden]="!quizQuestion[2]" (tap)=submitAns(quizQuestion[2]) padding=10
+            backgroundColor="#FF847C"></button>
         <button row="1" col="1" text={{quizQuestion[3]}} textWrap="true" fontWeight="bold" fontSize="15"
-            horizontalAlignment="center" [hidden]="!quizQuestion[3]" (tap)=submitAns(quizQuestion[3])></button>
+            horizontalAlignment="center" [hidden]="!quizQuestion[3]" (tap)=submitAns(quizQuestion[3]) padding=10
+            backgroundColor="#FF847C"></button>
 
     </GridLayout>
 
