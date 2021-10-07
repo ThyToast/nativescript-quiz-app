@@ -1,1 +1,15 @@
-<Button text="scoreboard works!" class="btn btn-primary"></Button>
+<ListView [items]="storedResult" class="list-group" backgroundColor="#99B898">
+    <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+        <!-- The item template can only have a single root view container (e.g. GridLayout, StackLayout, etc.)-->
+        <StackLayout backgroundColor="#FECEAB">
+
+            <label text="Score: {{item.score}}" class="list-group-item" fontWeight="bold" fontSize="15"></label>
+
+            <label text="Date: {{item.date}}" class="list-group-item" fontWeight="bold" fontSize="15"></label>
+
+            <label text="Time Taken: {{item.timeTaken}} seconds" class="list-group-item" fontWeight="bold"
+                fontSize="15"></label>
+
+        </StackLayout>
+    </ng-template>
+</ListView>
