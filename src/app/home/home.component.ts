@@ -106,4 +106,8 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+
+  scoreboard() {
+    this.router.navigate(["/scoreboard"]);
+  }
 }

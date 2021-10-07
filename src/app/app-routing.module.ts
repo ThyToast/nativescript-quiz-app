@@ -19,6 +19,13 @@ const routes: Routes = [
     loadChildren: () =>
       import("~/app/result/result.module").then((m) => m.ResultModule),
   },
+  {
+    path: "scoreboard",
+    loadChildren: () =>
+      import("~/app/scoreboard/scoreboard.module").then(
+        (m) => m.ScoreboardModule
+      ),
+  },
 ];
 
 @NgModule({

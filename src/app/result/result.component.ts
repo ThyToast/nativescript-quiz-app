@@ -13,7 +13,5 @@ export class ResultComponent implements OnInit {
     this.finalResult = this.router.router.getCurrentNavigation().extras.state.result;
   }
 
-  ngOnInit(): void {
-    console.log(this.finalResult);
-  }
+  ngOnInit(): void {}
 }

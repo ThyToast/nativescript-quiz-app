@@ -2,6 +2,11 @@ import { quizResult } from "./../result/result.model";
 import { quiz } from "./quiz.model";
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "@nativescript/angular";
+import {
+  getString,
+  hasKey,
+  setString,
+} from "@nativescript/core/application-settings";
 
 @Component({
   selector: "Quiz",
@@ -84,7 +89,7 @@ export class QuizComponent implements OnInit {
       result.timeTaken = 60 - this.counter;
       result.correctAns = this.correctAnswer;
 
-      console.log(result);
+      this.storedResult(result);
       this.router.navigate(["/result"], {
         state: {
           result,
@@ -92,6 +97,19 @@ export class QuizComponent implements OnInit {
       });
     } else {
       this.nextQuiz();
+    }
+  }
+
+  storedResult(result: quizResult) {
+    if (!hasKey("quiz")) {
+      let newResult = [result];
+      console.log(newResult);
+      setString("quiz", JSON.stringify(newResult));
+    } else {
+      let oldResult: quizResult[] = JSON.parse(getString("quiz"));
+      oldResult.push(result);
+      console.log(oldResult);
+      setString("quiz", JSON.stringify(oldResult));
     }
   }
 }
