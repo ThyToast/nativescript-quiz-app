@@ -14,4 +14,8 @@ export class ResultComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  endQuiz() {
+    this.router.navigate(["/home"]);
+  }
 }

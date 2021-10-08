@@ -57,7 +57,7 @@ export class QuizComponent implements OnInit {
       if (this.counter == 0) {
         this.timeout = true;
         clearInterval(interval);
-        console.log("Bingo!");
+        this.endQuiz();
       }
     }, 1000);
   }
@@ -80,21 +80,7 @@ export class QuizComponent implements OnInit {
       console.log("score is: ", this.score);
     }
     if (this.isEnd) {
-      let result = new quizResult();
-
-      result.score = this.score;
-      result.date = new Date().toLocaleString("en-GB", {
-        timeZone: "Asia/Kuala_Lumpur",
-      });
-      result.timeTaken = 60 - this.counter;
-      result.correctAns = this.correctAnswer;
-
-      this.storedResult(result);
-      this.router.navigate(["/result"], {
-        state: {
-          result,
-        },
-      });
+      this.endQuiz();
     } else {
       this.nextQuiz();
     }
@@ -111,5 +97,23 @@ export class QuizComponent implements OnInit {
       console.log(oldResult);
       setString("quiz", JSON.stringify(oldResult));
     }
+  }
+
+  endQuiz() {
+    let result = new quizResult();
+
+    result.score = this.score;
+    result.date = new Date().toLocaleString("en-GB", {
+      timeZone: "Asia/Kuala_Lumpur",
+    });
+    result.timeTaken = 60 - this.counter;
+    result.correctAns = this.correctAnswer;
+
+    this.storedResult(result);
+    this.router.navigate(["/result"], {
+      state: {
+        result,
+      },
+    });
   }
 }
